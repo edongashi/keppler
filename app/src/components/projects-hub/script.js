@@ -39,7 +39,7 @@ export default
                 return ''
             }
 
-            return `${this.$store.state.serverConfig.domain}/${this.currentProject.slug}/download`
+            return `${this.$store.state.serverConfig.domain}/keppler/${this.currentProject.slug}/download`
         }
     },
 

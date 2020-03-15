@@ -38,7 +38,7 @@ export default
     created()
     {
         const projectsUrl = `${process.env.NODE_ENV === 'production' ? '' : 'http://localhost:1571'}/projects`
-        this.projectsSocket = socketIoClient(projectsUrl)
+        this.projectsSocket = socketIoClient(projectsUrl, { path: '/keppler/socket.io' })
 
         this.projectsSocket.on('connect', (data) =>
         {
@@ -83,7 +83,7 @@ export default
             }
 
             // Create new socket connexion
-            this.projectSocket = socketIoClient(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost:1571'}/project/${value.slug}`)
+            this.projectSocket = socketIoClient(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost:1571'}/project/${value.slug}`, { path: '/keppler/socket.io' })
 
             this.projectSocket.on('connect', () =>
             {
@@ -120,7 +120,7 @@ export default
             }
 
             // Chat socket
-            this.chatSocket = socketIoClient(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost:1571'}/project/${value.slug}/chat`)
+            this.chatSocket = socketIoClient(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost:1571'}/project/${value.slug}/chat`, { path: '/keppler/socket.io' })
 
             this.chatSocket.on('connect', () =>
             {
